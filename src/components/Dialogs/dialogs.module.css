@@ -1,0 +1,98 @@
+.content {
+    display: grid;
+    grid-template-areas: "m e d";
+    grid-template-columns: 10fr .1fr 2fr;
+    text-align: center;
+    height: 100%;
+}
+
+.dialogs {
+    grid-area: d;
+}
+
+.title_wrapper {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.triangle_link {
+    align-self: center;
+    margin: 5px 0 0 8px;
+}
+
+.triangle_link img {
+    width: 12px;
+    height: 10px;
+
+}
+
+.title {
+    color: rgb(255 255 255 / 40%);
+    padding: 10px 0 5px 0;
+}
+
+.triangle {
+    height: 9px;
+    border: 5px solid rgb(0 0 0 / 0%);
+    border-top: 7px solid rgb(0 128 0);
+}
+
+.dialogItem {
+    display: flex;
+    padding: 10px 5px 5px 10px;
+    font-size: 13px;
+}
+
+.link {
+    display: flex;
+}
+
+.name {
+    display: block;
+    align-self: center;
+    padding: 0;
+    margin: 0;
+}
+
+.dialogItem:hover {
+    background-color: rgba(201, 199, 199, 0.32);
+}
+
+.dialogItem a {
+    color: #bbbcea;
+    text-decoration: none;
+    align-self: center;
+    text-align: center;
+}
+
+.dialogItem a:hover {
+    text-decoration: underline;
+}
+
+.dialogItem a img {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.empty {
+    grid-area: e;
+    background-color: #1f242d;
+}
+.messages_field{
+    margin-top: 10px;
+}
+.messeges {
+    grid-area: m;
+    padding: 10px;
+    text-align: start;
+    color: rgb(206, 204, 204);
+    width: fit-content;
+    background-color: rgb(199 195 195 / 33%);
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgb(29 33 38 / 3%), 0px 1px 2px rgb(29 33 38 / 10%);
+    margin: 10px 10px;
+}

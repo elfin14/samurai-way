@@ -1,24 +1,24 @@
 import React from 'react';
-import skull from "../skull.svg";
-import swords from "../Header/swords.png";
-import '../Header/header.css';
+import skull from "./skull.svg";
+import styles from'./header.module.css';
 
 function Header() {
     return (
-        <div className="header__wrapper">
-            <div className="header__wrapper-img">
-                <img src='https://garsidej.files.wordpress.com/2016/05/coursework-1.jpg?w=768' className="header__wrapper-background"/>
+        <div className={styles.header__wrapper}>
+            <div className={styles.header__wrapper_img}>
+                <img src='https://garsidej.files.wordpress.com/2016/05/coursework-1.jpg?w=768' className={styles.header__wrapper_background}/>
+                <div className={styles.header}>
+                    <div className={styles.header__logo}>
+                        <img src={skull} className={styles.img}></img>
+                        <p className={styles.header__text}>Pirat</p>
+                    </div>
+                    <div className={styles.header__entry}>
+                        <button className={styles.header__button}>Log In</button>
+                    </div>
+                </div>
             </div>
-            <div className="header">
-                <div className="header__logo">
-                    <img src={skull} className="img"></img>
-                    <p className="header__text">Pirat</p>
-                </div>
-                <div className="header__entry">
-                    <button className="header__button">Log In</button>
-                </div>
+            <div className={styles.string}></div>
 
-            </div>
         </div>
     );
 }

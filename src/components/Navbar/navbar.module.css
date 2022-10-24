@@ -1,0 +1,103 @@
+
+.nav {
+    grid-area: n;
+    position: fixed;
+    width: 140px;
+    -webkit-transform: translateY(32%);
+    -ms-transform: translateY(32%);
+    transform: translateY(32%);
+}
+.nav__list {
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+}
+
+.nav__list_item {
+    margin-top: 5px;
+    list-style: none;
+    background-color: rgb(49 57 71);
+    display: block;
+}
+.nav__list_item a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.4);
+    transition: 0.5s;
+    padding: 8px 35px;
+    display: block;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+}
+.nav__list_item span {
+    display: block;
+    position: absolute;
+    background: #2894ff;
+}
+
+.nav__list_item span:nth-child(1) {
+    left: 0;
+    bottom: 0;
+    width: 1px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s;
+}
+
+.nav__list_item:hover span:nth-child(1) {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+}
+.nav__list_item span:nth-child(2) {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s;
+}
+
+.nav__list_item:hover span:nth-child(2) {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.nav__list_item span:nth-child(3) {
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s;
+}
+
+.nav__list_item:hover span:nth-child(3) {
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform 0.5s;
+}
+
+.nav__list_item span:nth-child(4) {
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+}
+
+.nav__list_item:hover span:nth-child(4) {
+    transform: scaleX(1);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+.nav__list_item a.activeLink {
+    color: #2894ff;
+    text-shadow: 1px 1px 5px #2196f3, 1px 1px 15px #2196f3, 1px 1px 30px #2196f3;
+}
