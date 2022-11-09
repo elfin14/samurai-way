@@ -3,11 +3,17 @@
     grid-template-areas: "m e d";
     grid-template-columns: 10fr .1fr 2fr;
     text-align: center;
-    height: 100%;
+    height: auto;
 }
 
 .dialogs {
     grid-area: d;
+    width: 160px;
+    height: fit-content;
+}
+.dialogs_container{
+    position: fixed;
+    width: inherit;
 }
 
 .title_wrapper {
@@ -84,6 +90,7 @@
 }
 .messages_field{
     margin-top: 10px;
+    height: fit-content;
 }
 .messeges {
     grid-area: m;
