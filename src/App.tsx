@@ -9,12 +9,12 @@ import {News} from './components/News/News';
 import {Comrades} from './components/Comrades/Comrades';
 import {Music} from './components/Music/Music';
 import {Setting} from './components/Setting/Setting';
-import {StateType} from './redux/state';
+import {ActionTypes, StateType} from './redux/state';
 
 
 type AppPropsType = {
     state: StateType
-    addNewPost:(text:string)=>void
+    dispatch:(action:ActionTypes)=>void
 }
 
 function App(props: AppPropsType) {
@@ -26,7 +26,11 @@ function App(props: AppPropsType) {
                     <Navbar/>
                     <div className="wrapper__content">
                         <Route path="/profile" render={() =>
-                            <Profile posts={props.state.profilePage.posts} addNewPost={props.addNewPost}/>}/>
+                            <Profile posts={props.state.profilePage.posts}
+                                     newPostText={props.state.profilePage.newPostText}
+                                     dispatch={props.dispatch}
+                                    />
+                        }/>
                         <Route path="/news" render={() => <News/>}/>
                         <Route path="/dialogs" render={() => <Dialogs dialogs={props.state.dialogsPage.dialogs} messeges={props.state.dialogsPage.messeges}/>}/>
                         <Route path="/comrades" render={() => <Comrades/>}/>
