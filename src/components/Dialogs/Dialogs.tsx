@@ -1,13 +1,21 @@
 import React from 'react';
 import styles from './dialogs.module.css';
 import triangle from './triangle.png'
+import {ChangeEvent} from 'react';
 import {DialogItem} from './DialogItem/DialogItem';
 import {Message} from './Message/Message';
-import {DialogsType, MessegesType} from '../../redux/state';
+import {
+    ActionTypes,
+    DialogsType,
+    MessegesType
+} from '../../redux/state';
+import {addMessageMessageAC, changeNewMessageAC} from '../../redux/dialogs-reducer';
 
 type DialogsPropsType = {
+    dispatch:(action:ActionTypes)=>void
     dialogs: Array<DialogsType>,
     messeges: Array<MessegesType>
+    newMessageText:string
 }
 
 export const Dialogs = (props: DialogsPropsType) => {
@@ -17,12 +25,21 @@ export const Dialogs = (props: DialogsPropsType) => {
     let messageElements = props.messeges.map((el) =>
         <Message message={el.message}/>
     )
+    const onMessageChangeHandler =(e:ChangeEvent<HTMLTextAreaElement>)=>{
+        let newMessage=e.currentTarget.value
+        props.dispatch(changeNewMessageAC(newMessage))
+    }
+    const addMessage=()=>{
+        props.dispatch(addMessageMessageAC(props.newMessageText))
+    }
     return (
         <>
             <div className={styles.content}>
                 <div className={styles.messages_field}>
                     {messageElements}
                 </div>
+                <textarea onChange={onMessageChangeHandler} value={props.newMessageText}/>
+                <button onClick={addMessage}>Send</button>
                 <div className={styles.empty}></div>
                 <div className={styles.dialogs}>
                     <div className={styles.dialogs_container}>

@@ -14,7 +14,7 @@ import {ActionTypes, StateType} from './redux/state';
 
 type AppPropsType = {
     state: StateType
-    dispatch:(action:ActionTypes)=>void
+    dispatch: (action: ActionTypes) => void
 }
 
 function App(props: AppPropsType) {
@@ -29,10 +29,14 @@ function App(props: AppPropsType) {
                             <Profile posts={props.state.profilePage.posts}
                                      newPostText={props.state.profilePage.newPostText}
                                      dispatch={props.dispatch}
-                                    />
+                            />
                         }/>
                         <Route path="/news" render={() => <News/>}/>
-                        <Route path="/dialogs" render={() => <Dialogs dialogs={props.state.dialogsPage.dialogs} messeges={props.state.dialogsPage.messeges}/>}/>
+                        <Route path="/dialogs" render={() =>
+                            <Dialogs dialogs={props.state.dialogsPage.dialogs}
+                                     messeges={props.state.dialogsPage.messeges}
+                                     newMessageText={props.state.dialogsPage.newMessageText}
+                                     dispatch={props.dispatch}/>}/>
                         <Route path="/comrades" render={() => <Comrades/>}/>
                         <Route path="/music" render={() => <Music/>}/>
                         <Route path="/setting" render={() => <Setting/>}/>

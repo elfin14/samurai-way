@@ -1,3 +1,6 @@
+import {ProfileReducer} from './profile-reducer';
+import {DialogsReducer} from './dialogs-reducer';
+
 export type DialogsType = {
     id: number,
     name: string
@@ -14,12 +17,13 @@ export type PostsType = {
     likescount: number
 }
 
-type ProfilePageType = {
+export type ProfilePageType = {
     newPostText: string
     posts: Array<PostsType>
 }
 
-type DialogsPageType = {
+export type DialogsPageType = {
+    newMessageText:string,
     messeges: Array<MessegesType>,
     dialogs: Array<DialogsType>
 }
@@ -29,17 +33,25 @@ export type StateType = {
     dialogsPage: DialogsPageType
 }
 
-type AddNewPostType = {
+export type AddNewPostType = {
     type: 'ADD-POST',
     newPostText:string
 }
 
-type ChangeNewTextType = {
+export type ChangeNewTextType = {
     type: 'CHANGE-NEW-TEXT',
     newText:string
 }
+export type AddMessageType = {
+    type: 'CHANGE-NEW-MESSAGE',
+    newMessage:string
+}
+export type AddNewMessageType = {
+    type: 'ADD-NEW-MESSAGE',
+    newMessageText:string
+}
 
-export type ActionTypes = AddNewPostType | ChangeNewTextType
+export type ActionTypes = AddNewPostType | ChangeNewTextType| AddMessageType| AddNewMessageType
 export type StoreType = {
     _state: StateType,
     getState: () => StateType,
@@ -47,9 +59,6 @@ export type StoreType = {
     subscriber: (observer: () => void) => void,
     dispatch: (action: ActionTypes) => void,
 }
-
-export const addPostAC =(newPostText:string):AddNewPostType => ({type: 'ADD-POST', newPostText: newPostText})
-export const changeNewTextAC =(newPost:string):ChangeNewTextType => ({type:'CHANGE-NEW-TEXT',newText:newPost})
 
 const store: StoreType = {
     _state: {
@@ -61,6 +70,7 @@ const store: StoreType = {
             ]
         },
         dialogsPage: {
+            newMessageText:'',
             messeges: [
                 {id: 1, message: 'Hi NIGGA!!!'},
                 {id: 2, message: 'Yoo NIGGA!!!'},
@@ -84,20 +94,9 @@ const store: StoreType = {
         this._rerenderEntireTree = observer
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-
-            const NewPost = {
-                id: 3,
-                message: action.newPostText,
-                likescount: 1
-            }
-            this._state.profilePage.posts.push(NewPost)
-            this._state.profilePage.newPostText = ''
-            this._rerenderEntireTree()
-        } else if (action.type === 'CHANGE-NEW-TEXT') {
-            this._state.profilePage.newPostText = action.newText
-            this._rerenderEntireTree()
-        }
+        this._state.profilePage = ProfileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action)
+        this._rerenderEntireTree()
     }
 }
 export default store
