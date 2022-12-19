@@ -60,7 +60,7 @@ export type StoreType = {
     dispatch: (action: ActionTypes) => void,
 }
 
-const store: StoreType = {
+let store: StoreType = {
     _state: {
         profilePage: {
             newPostText: '',

@@ -1,31 +1,31 @@
 import React, {ChangeEvent} from 'react';
 import Post from './Post/Post';
 import styles from './mypost.module.css'
-import {ActionTypes, PostsType} from '../../../redux/state';
-import {addPostAC, changeNewTextAC} from '../../../redux/profile-reducer';
+import {PostsType} from '../../../redux/store';
 
 
 type MypostsPropsType = {
     posts: Array<PostsType>
-    newPostText:string,
-    dispatch:(action:ActionTypes)=>void
+    onPostChange:(newPost:string)=>void,
+    addPost:()=>void
+    newPostText:string
 }
 
 function Myposts(props: MypostsPropsType) {
 
     let postElements = props.posts.map((el, id) => <Post key={id} message={el.message} likescount={el.likescount}/>)
 
-    const addPost = () => {props.dispatch(addPostAC(props.newPostText))}
+    const onAddPost = () => {props.addPost()}
     const onPostChangeHandler=(e:ChangeEvent<HTMLTextAreaElement>)=>{
         let newPost=e.currentTarget.value
-        props.dispatch(changeNewTextAC(newPost))
+        props.onPostChange(newPost)
     }
 
     return (
         <div className={styles.wrapper}>
             <p>My posts</p>
             <textarea value={props.newPostText} onChange={onPostChangeHandler}></textarea>
-            <button onClick={addPost}>Add Post</button>
+            <button onClick={onAddPost}>Add Post</button>
             {postElements}
         </div>
     );
