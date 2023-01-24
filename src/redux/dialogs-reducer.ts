@@ -1,6 +1,20 @@
-import {ActionTypes, AddMessageType, AddNewMessageType, DialogsPageType} from './store';
+import {ActionTypes, AddMessageType, AddNewMessageType} from './store';
 
-const initialState ={
+export type MessegesType = {
+    id: number,
+    message: string
+}
+export type DialogsType = {
+    id: number,
+    name: string
+}
+type InitialStateType ={
+    newMessageText: string,
+    messeges:Array<MessegesType>,
+    dialogs:Array<DialogsType>
+
+}
+const initialState:InitialStateType ={
     newMessageText:'',
     messeges: [
         {id: 1, message: 'Hi NIGGA!!!'},
@@ -14,19 +28,17 @@ const initialState ={
         {id: 4, name: 'Mbopo'},
     ]
 }
-export const DialogsReducer =(state:DialogsPageType = initialState,action:ActionTypes)=>{
+export const DialogsReducer =(state:InitialStateType = initialState,action:ActionTypes)=>{
+
     switch (action.type){
-        case 'ADD-NEW-MESSAGE':
-            const NewMessage = {
-                id: 5,
-                message: action.newMessageText,
-            }
-            state.messeges.push(NewMessage)
-            state.newMessageText = ''
-            return state
-        case 'CHANGE-NEW-MESSAGE':
-            state.newMessageText = action.newMessage
-            return state
+        case 'ADD-NEW-MESSAGE':{
+            return {...state,
+                newMessageText:"",
+                messeges: [...state.messeges,{id: 5, message: action.newMessageText,}]}
+        }
+        case 'CHANGE-NEW-MESSAGE':{
+            return {...state, newMessageText:action.newMessage}
+        }
         default:
             return state
     }

@@ -1,12 +1,13 @@
 import {ProfileReducer} from './profile-reducer';
 import {DialogsReducer} from './dialogs-reducer';
 
-export type DialogsType = {
+
+type DialogsType = {
     id: number,
     name: string
 }
 
-export type MessegesType = {
+ type MessegesType = {
     id: number,
     message: string
 }
@@ -58,6 +59,7 @@ export type StoreType = {
     _rerenderEntireTree: () => void
     subscriber: (observer: () => void) => void,
     dispatch: (action: ActionTypes) => void,
+
 }
 
 let store: StoreType = {

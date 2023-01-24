@@ -8,10 +8,10 @@ import {News} from './components/News/News';
 import {Comrades} from './components/Comrades/Comrades';
 import {Music} from './components/Music/Music';
 import {Setting} from './components/Setting/Setting';
-import {DialogsContainer} from './components/Dialogs/DialogsContainer';
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+
 
 function App() {
-    debugger
     return (
             <div className="container">
                 <div className="app">

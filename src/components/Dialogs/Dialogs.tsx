@@ -4,22 +4,19 @@ import triangle from './triangle.png'
 import {ChangeEvent} from 'react';
 import {DialogItem} from './DialogItem/DialogItem';
 import {Message} from './Message/Message';
-import {
-    DialogsType,
-    MessegesType
-} from '../../redux/store';
+import {DialogsPropsType} from "./DialogsContainer";
 
 
-type DialogsPropsType = {
-    onMessageChange:(newMessage:string)=>void
-    dialogs: Array<DialogsType>,
-    messeges: Array<MessegesType>
-    newMessageText:string
-    addMessage:()=>void
-}
+//  type DialogsPropsType = {
+//     onMessageChange:(newMessage:string)=>void
+//     dialogs: Array<DialogsType>,
+//     messeges: Array<MessegesType>
+//     newMessageText:string
+//     addMessage:()=>void
+// }
 
 export const Dialogs = (props: DialogsPropsType) => {
-    let dialogElements = props.dialogs.map((el) =>
+    let dialogElements = props.dialogs.dialogs.map((el) =>
         <DialogItem name={el.name} id={el.id}/>
     )
     let messageElements = props.messeges.map((el) =>
@@ -30,7 +27,7 @@ export const Dialogs = (props: DialogsPropsType) => {
         props.onMessageChange(newMessage)
     }
     const onAddMessage=()=>{
-        props.addMessage()
+        props.addMessage(props.newMessageText)
     }
     return (
         <>
