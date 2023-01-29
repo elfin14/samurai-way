@@ -3,9 +3,9 @@
     grid-area: n;
     position: fixed;
     width: 140px;
-    -webkit-transform: translateY(32%);
-    -ms-transform: translateY(32%);
-    transform: translateY(32%);
+    -webkit-transform: translateY(27.5%);
+    -ms-transform: translateY(27.5%);
+    transform: translateY(27.5%);
 }
 .nav__list {
     margin: 0 auto;

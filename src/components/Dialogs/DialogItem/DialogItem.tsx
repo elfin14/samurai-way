@@ -9,7 +9,7 @@ type DialogItemProps = {
 
 export const DialogItem = (props:DialogItemProps) => {
     return (
-        <div className={styles.dialogItem}>
+        <div className={styles.dialogItem} >
             <NavLink className={styles.link} to={"/dialogs/" + props.id}>
                 <img
                     src="https://cdnn21.img.ria.ru/images/103116/49/1031164918_0:0:2000:1126_1920x0_80_0_0_7b75a3ebf8021ae0790a915cfe76e0d0.jpg"

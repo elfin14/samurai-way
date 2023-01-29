@@ -1,5 +1,6 @@
 import {ProfileReducer} from './profile-reducer';
 import {DialogsReducer} from './dialogs-reducer';
+import {UsersType} from "./users-reducer";
 
 
 type DialogsType = {
@@ -7,7 +8,7 @@ type DialogsType = {
     name: string
 }
 
- type MessegesType = {
+type MessegesType = {
     id: number,
     message: string
 }
@@ -24,7 +25,7 @@ export type ProfilePageType = {
 }
 
 export type DialogsPageType = {
-    newMessageText:string,
+    newMessageText: string,
     messeges: Array<MessegesType>,
     dialogs: Array<DialogsType>
 }
@@ -36,23 +37,42 @@ export type StateType = {
 
 export type AddNewPostType = {
     type: 'ADD-POST',
-    newPostText:string
+    newPostText: string
 }
 
 export type ChangeNewTextType = {
     type: 'CHANGE-NEW-TEXT',
-    newText:string
+    newText: string
 }
 export type AddMessageType = {
     type: 'CHANGE-NEW-MESSAGE',
-    newMessage:string
+    newMessage: string
 }
 export type AddNewMessageType = {
     type: 'ADD-NEW-MESSAGE',
-    newMessageText:string
+    newMessageText: string
 }
+export type UserFollowType = {
+    type: 'FOLLOW',
+    userId: number
+}
+export type UserUnFollowType = {
+    type: 'UNFOLLOW',
+    userId: number
+}
+export type SetUsersType = {
+    type: 'SET-USERS',
+    users: Array<UsersType>
+}
+export type ActionTypes =
+    AddNewPostType
+    | ChangeNewTextType
+    | AddMessageType
+    | AddNewMessageType
+    | UserFollowType
+    | UserUnFollowType
+    | SetUsersType
 
-export type ActionTypes = AddNewPostType | ChangeNewTextType| AddMessageType| AddNewMessageType
 export type StoreType = {
     _state: StateType,
     getState: () => StateType,
@@ -72,7 +92,7 @@ let store: StoreType = {
             ]
         },
         dialogsPage: {
-            newMessageText:'',
+            newMessageText: '',
             messeges: [
                 {id: 1, message: 'Hi NIGGA!!!'},
                 {id: 2, message: 'Yoo NIGGA!!!'},

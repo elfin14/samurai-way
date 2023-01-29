@@ -17,10 +17,10 @@ import {DialogsPropsType} from "./DialogsContainer";
 
 export const Dialogs = (props: DialogsPropsType) => {
     let dialogElements = props.dialogs.dialogs.map((el) =>
-        <DialogItem name={el.name} id={el.id}/>
+            <DialogItem name={el.name} id={el.id} key={el.id} />
     )
     let messageElements = props.messeges.map((el) =>
-        <Message message={el.message}/>
+        <Message message={el.message} key={el.id}/>
     )
     const onMessageChangeHandler =(e:ChangeEvent<HTMLTextAreaElement>)=>{
         let newMessage=e.currentTarget.value

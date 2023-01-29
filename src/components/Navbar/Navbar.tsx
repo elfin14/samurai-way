@@ -52,6 +52,15 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li className={styles.nav__list_item}>
+                    <NavLink to='/users' activeClassName={styles.activeLink} >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Users
+                    </NavLink>
+                </li>
+                <li className={styles.nav__list_item}>
                     <NavLink to='/setting' activeClassName={styles.activeLink} >
                         <span></span>
                         <span></span>
