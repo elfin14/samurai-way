@@ -1,17 +1,17 @@
 import {ActionTypes, SetUsersType, UserFollowType, UserUnFollowType} from './store';
 
 
-type UserLocationType = {
-    country: string,
-    city: string
+type UserPhotoType = {
+    small: string,
+    large: string
 }
 export type UsersType = {
+    name: string,
     id: number,
-    photoURL: string,
-    followed: boolean,
-    fullname: string,
-    status: string
-    location: UserLocationType
+    photos: UserPhotoType,
+    status: string,
+    followed: boolean
+
 }
 type InitialStateType = {
     users: Array<UsersType>
