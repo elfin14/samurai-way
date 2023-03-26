@@ -1,4 +1,11 @@
-import {ActionTypes, SetUsersType, UserFollowType, UserUnFollowType} from './store';
+import {
+    ActionTypes,
+    SetCurrentPageType,
+    setTotalUsersCountType,
+    SetUsersType,
+    UserFollowType,
+    UserUnFollowType
+} from './store';
 
 
 type UserPhotoType = {
@@ -15,9 +22,15 @@ export type UsersType = {
 }
 type InitialStateType = {
     users: Array<UsersType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 const initialState: InitialStateType = {
-    users: []
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 export const UsersReducer = (state: InitialStateType = initialState, action: ActionTypes) => {
 
@@ -34,11 +47,22 @@ export const UsersReducer = (state: InitialStateType = initialState, action: Act
 
             }
         }
-        case "SET-USERS":{
+        case "SET-USERS": {
             return {
-                ...state, users: [...state.users, ...action.users]
+                ...state, users: [...action.users]
             }
         }
+        case "SET-CURRENT-PAGE": {
+            return {
+                ...state, currentPage: action.currentPage
+            }
+        }
+        case "SET-TOTAL_USES_COUNT": {
+            return {
+                ...state, totalUsersCount: action.totalCount
+            }
+        }
+
 
         default:
             return state
@@ -60,5 +84,17 @@ export const setUsersAC = (users: Array<UsersType>): SetUsersType => (
     {
         type: "SET-USERS",
         users
+    }
+)
+export const setCurrentPageAC = (currentPage: number): SetCurrentPageType => (
+    {
+        type: "SET-CURRENT-PAGE",
+        currentPage
+    }
+)
+export const setTotalUsersCountAC = (totalCount: number): setTotalUsersCountType => (
+    {
+        type: "SET-TOTAL_USES_COUNT",
+        totalCount
     }
 )

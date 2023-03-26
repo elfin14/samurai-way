@@ -1,6 +1,6 @@
 import {ProfileReducer} from './profile-reducer';
 import {DialogsReducer} from './dialogs-reducer';
-import {UsersType} from "./users-reducer";
+import { UsersType} from "./users-reducer";
 
 
 type DialogsType = {
@@ -64,6 +64,14 @@ export type SetUsersType = {
     type: 'SET-USERS',
     users: Array<UsersType>
 }
+export type SetCurrentPageType = {
+    type: 'SET-CURRENT-PAGE',
+    currentPage: number
+}
+export type setTotalUsersCountType = {
+    type: 'SET-TOTAL_USES_COUNT',
+    totalCount: number
+}
 export type ActionTypes =
     AddNewPostType
     | ChangeNewTextType
@@ -72,6 +80,8 @@ export type ActionTypes =
     | UserFollowType
     | UserUnFollowType
     | SetUsersType
+    | SetCurrentPageType
+    | setTotalUsersCountType
 
 export type StoreType = {
     _state: StateType,

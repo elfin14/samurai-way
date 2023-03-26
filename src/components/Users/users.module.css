@@ -36,3 +36,23 @@
     width: 100%;
     color: #ffffff;
 }
+.wrapButtonPage{
+    text-align: center;
+    margin-top: 10px;
+   padding-top: 2px;
+}
+.selectedPage {
+    cursor: pointer;
+    margin-right: 3px;
+    color: #ffffff;
+    padding: 1px 3px;
+    background-color: #bbbcea;
+    border-radius: 2px;
+}
+.buttonPage{
+    cursor: pointer;
+    padding: 1px 3px;
+    margin-right: 3px;
+    color: #9e9ec0;
+    background-color: #313947;
+}
